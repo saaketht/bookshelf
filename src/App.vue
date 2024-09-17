@@ -3,7 +3,7 @@
     <h1>My Bookshelf</h1>
     <div class="background-selector">
       <label for="background-select">Choose background:</label>
-      <select id="background-select" v-model="backgroundType" @change="updateBackground">
+      <select id="background-select" v-model="backgroundType" >
         <option value="image">Image</option>
         <option value="color">Solid Color</option>
       </select>
