@@ -17,7 +17,8 @@ export default defineComponent({
 body {
   margin: 0;
   padding: 0;
-  background: linear-gradient(to right, #1c1c1c, #333333); /* Gradient background */
+  background: url('@/assets/grandlib.png') no-repeat center center fixed; /* Set background image */
+  background-size: cover; /* Ensure the image covers the entire viewport */
   font-family: 'Roboto', sans-serif; /* Updated font */
 }
 
@@ -30,6 +31,8 @@ body {
   align-items: center;
   justify-content: center; /* Centering content vertically */
   padding: 20px; /* Adjust padding */
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background for better readability */
+  border-radius: 10px; /* Rounded corners for the app container */
 }
 
 h1 {
@@ -46,6 +49,6 @@ router-view {
   padding: 20px; /* Padding for router-view */
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Shadow around content */
   border-radius: 10px; /* Rounded corners */
-  background-color: #1c1c1c; /* Background color for content */
+  background-color: rgba(28, 28, 28, 0.8); /* Semi-transparent background for content */
 }
 </style>

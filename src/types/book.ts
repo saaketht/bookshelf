@@ -6,4 +6,5 @@ export interface Book {
   pages: number
   publishedYear: number
   color: string
+  coverUrl?: string
 }
