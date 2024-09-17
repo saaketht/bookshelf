@@ -40,13 +40,7 @@ export default defineComponent({
     const books = ref<Book[]>(mockBooks)
     const sortBy = ref<keyof Book>('title')
 
-    // Group books into 3 shelves
-    const groupedBooks = computed(() => {
-      const booksPerShelf = Math.ceil(books.value.length / 3)
-      return Array.from({ length: 3 }, (_, index) =>
-        books.value.slice(index * booksPerShelf, (index + 1) * booksPerShelf)
-      )
-    })
+    const booksPerShelf = 5 // Define how many books per shelf
 
     const sortedBooks = computed(() => {
       return [...books.value].sort((a, b) => {
@@ -57,19 +51,26 @@ export default defineComponent({
       })
     })
 
+    // Update groupedBooks to use sortedBooks
+    const groupedBooks = computed(() => {
+      const shelves = []
+      for (let i = 0; i < sortedBooks.value.length; i += booksPerShelf) {
+        shelves.push(sortedBooks.value.slice(i, i + booksPerShelf))
+      }
+      return shelves
+    })
+
     const sortBooks = () => {
       // Sorting is handled by computed
     }
 
     const handleBookHover = (book: Book) => {
       console.log('Book hovered:', book.title)
-      // Implement cover display effect later
     }
 
     return {
       sortBy,
       groupedBooks,
-      sortedBooks,
       sortBooks,
       handleBookHover
     }
@@ -77,9 +78,13 @@ export default defineComponent({
 })
 </script>
 
+
 <style scoped>
+.body{
+  background-color: #5e2c04;
+}
 .bookshelf-container {
-  width: 100%;
+  width: 1200px;
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
@@ -90,19 +95,32 @@ export default defineComponent({
 }
 
 .bookshelf-wrapper {
-  overflow-x: auto;
+  
   padding: 20px 0;
 }
 
 .shelf {
-  display: inline-flex;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
   background-color: #8b4513;
   border-bottom: 15px solid #5e2c04;
-  padding: 10px 10px 0;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  border-radius: 5px;
+  border-right: 5px solid #5e2c04;
+  border-left: 15px solid #5e2c04;
+
+  padding: 10px;
+  box-shadow: 0 6px 12px rgba(1, 1, 1, 0.8); /* Adjust shadow for depth */
+  
   position: relative;
-  margin-bottom: 20px; /* Add spacing between shelves */
+  margin-bottom: -40px; /* Spacing between shelves */
+  height: 290px; /* Fixed height for the shelf */
+   /* 3D Perspective */
+  transition: transform 0.3s ease; /* Smooth transition for 3D effect */
+  transform: perspective(1000px)
+}
+
+.shelf:hover {
+  /* Rotate on hover for 3D effect */
 }
 
 .shelf::before {
@@ -112,7 +130,9 @@ export default defineComponent({
   left: 0;
   right: 0;
   height: 20px;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
+  border-radius: 5px 5px 0 0;
+  box-shadow: inset 0 -4px 8px rgba(0, 0, 0, 0.3); /* Shadow inside shelf */
 }
 
 .shelf::after {
@@ -123,6 +143,8 @@ export default defineComponent({
   right: 0;
   height: 15px;
   background: linear-gradient(to right, #5e2c04, #8b4513, #5e2c04);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  border-radius: 0 0 5px 5px;
 }
+
 </style>

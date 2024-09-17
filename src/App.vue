@@ -17,24 +17,35 @@ export default defineComponent({
 body {
   margin: 0;
   padding: 0;
-  background-color: #f0f0f0;
+  background: linear-gradient(to right, #1c1c1c, #333333); /* Gradient background */
+  font-family: 'Roboto', sans-serif; /* Updated font */
 }
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #ffffff; /* Text color for better contrast */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  padding-top: 60px;
+  justify-content: center; /* Centering content vertically */
+  padding: 20px; /* Adjust padding */
 }
 
 h1 {
-  margin-bottom: 2rem;
+  font-size: 3rem; /* Larger, more prominent title */
+  margin-bottom: 1.5rem; /* Reduced margin */
+  font-weight: bold; /* Bold title */
+  color: #f39c12; /* Bright color for the title */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Text shadow for better readability */
+}
+
+router-view {
+  width: 100%;
+  max-width: 1200px; /* Limit max width for content */
+  padding: 20px; /* Padding for router-view */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Shadow around content */
+  border-radius: 10px; /* Rounded corners */
+  background-color: #1c1c1c; /* Background color for content */
 }
 </style>

@@ -57,7 +57,7 @@ export default defineComponent({
   /* border-radius: 0 3px 3px 0; */
   position: relative;
   overflow: hidden;
-  border-radius:5px;
+  border-radius: 5px;
 }
 
 .book-spine::before {
@@ -74,12 +74,12 @@ export default defineComponent({
 
 .book-spine:hover {
   transform: scale(1.4) translateY(-5px);
-  z-index: 1;
-  border-radius: 5px;
+  z-index:10;
 }
 
 .book-spine:hover::before {
-  opacity: 11;
+  opacity: 1;
+  
 }
 
 .book-info {
