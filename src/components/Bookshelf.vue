@@ -24,6 +24,7 @@
         <input id="cover-toggle" type="checkbox" v-model="useCoverImages" />
       </label>
     </div>
+    <button @click="goToReader">Go to Reader</button>
 
     <!-- Render shelves -->
     <div v-for="(shelfBooks, index) in groupedBooks" :key="index" class="bookshelf-wrapper">
@@ -55,6 +56,10 @@ import { type Book } from '@/types/book'
 import { mockBooks } from '@/mock/books'
 import BookSpine from './BookSpine.vue'
 import BookCover from './BookCover.vue'
+import { useRouter } from 'vue-router'
+
+
+
 
 export default defineComponent({
   name: 'BookshelfMain',
@@ -67,6 +72,7 @@ export default defineComponent({
     const sortBy = ref<keyof Book>('title')
     const showCoverView = ref(false)
     const useCoverImages = ref(false)
+    const router = useRouter()
 
     const booksPerShelf = 5
 
@@ -90,9 +96,13 @@ export default defineComponent({
     const sortBooks = () => {
       // Sorting is handled by computed
     }
+    const goToReader = () => {
+    router.push({ name: 'ReaderView' }) // Navigate to the Reader view (use 'ReaderView')
+    }
 
     return {
       sortBy,
+      goToReader,
       groupedBooks,
       sortBooks,
       showCoverView,

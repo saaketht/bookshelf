@@ -2,45 +2,35 @@
   <div id="app">
     <h1>My Bookshelf</h1>
     <div class="background-selector">
-      <label for="background-select">Choose background: </label>
-      <select id="background-select" v-model="backgroundType">
-        <option value="color">Solid</option>
+      <label for="background-select">Choose background:</label>
+      <select id="background-select" v-model="backgroundType" @change="updateBackground">
         <option value="image">Image</option>
+        <option value="color">Solid Color</option>
       </select>
     </div>
+
+
     <router-view></router-view>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch } from 'vue'
-
-// Import background image
-import backgroundImage from '@/assets/grandlib.png'
+import { defineComponent, ref } from 'vue'
 
 export default defineComponent({
   name: 'App',
   setup() {
-    const backgroundType = ref<'color' | 'image'>('color')
+    const backgroundType = ref<'image' | 'color'>('image')
 
-    // Watch for changes to backgroundType and update the background style accordingly
-    watch(
-      backgroundType,
-      (newValue) => {
-        if (newValue === 'image') {
-          document.body.style.background = `url(${backgroundImage}) no-repeat center center fixed`
-          document.body.style.backgroundSize = 'cover'
-          document.body.style.backgroundColor = '' // Reset background color
-        } else {
-          document.body.style.background = ''
-          document.body.style.backgroundColor = '#333333' // Example solid color
-        }
-      },
-      { immediate: true }
-    )
+
+    const updateBackground = () => {
+      // Trigger a watch to apply background styles
+      backgroundType.value
+    }
 
     return {
-      backgroundType
+      backgroundType,
+      updateBackground,
     }
   }
 })
@@ -48,35 +38,58 @@ export default defineComponent({
 
 <style>
 body {
-  margin: 1rem;
+  margin: 0;
   padding: 0;
-  background-color: #f0f0f0;
+  font-family: 'Roboto', sans-serif;
 }
 
 #app {
-  font-family: Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  /* color: #2c3e50; light mode font color */
-  color: #f0f0f0; /* dark mode font color */
+  color: #ffffff;
   min-height: 100vh;
   display: flex;
+  width: 100vw;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   padding: 20px;
-  background: rgba(0, 0, 0, 0.3); /* dark mode */
-  border-radius: 10px; /* Rounded corners for the app container */
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
 }
 
 h1 {
-  margin-bottom: 1rem;
-  font-weight: lighter;
-  color: #f0f0f0; /* Bright color for the title */
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+  color: #f39c12;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+router-view {
+  width: 100%;
+  padding: 20px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: rgba(28, 28, 28, 0.8);
 }
 
 .background-selector {
-  color: #ffffff; /* Ensure the dropdown label is readable */
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+button {
+  margin-top: 1.5rem;
+  padding: 10px 20px;
+  background-color: #f39c12;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+button:hover {
+  background-color: #e67e22;
 }
 </style>
