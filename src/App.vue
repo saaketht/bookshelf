@@ -1,24 +1,53 @@
 <template>
   <div id="app">
     <h1>My Bookshelf</h1>
+    <div class="background-selector">
+      <label for="background-select">Choose background:</label>
+      <select id="background-select" v-model="backgroundType" @change="updateBackground">
+        <option value="image">Image</option>
+        <option value="color">Solid Color</option>
+      </select>
+    </div>
     <router-view></router-view>
   </div>
 </template>
 
+
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref, watch } from 'vue'
+
+// Import background image
+import backgroundImage from '@/assets/grandlib.png'
 
 export default defineComponent({
-  name: 'App'
+  name: 'App',
+  setup() {
+    const backgroundType = ref<'image' | 'color'>('image')
+
+    // Watch for changes to backgroundType and update the background style accordingly
+    watch(backgroundType, (newValue) => {
+      if (newValue === 'image') {
+        document.body.style.background = `url(${backgroundImage}) no-repeat center center fixed`
+        document.body.style.backgroundSize = 'cover'
+        document.body.style.backgroundColor = '' // Reset background color
+      } else {
+        document.body.style.background = ''
+        document.body.style.backgroundColor = '#333333' // Example solid color
+      }
+    }, { immediate: true })
+
+    return {
+      backgroundType
+    }
+  }
 })
 </script>
+
 
 <style>
 body {
   margin: 0;
   padding: 0;
-  background: url('@/assets/grandlib.png') no-repeat center center fixed; /* Set background image */
-  background-size: cover; /* Ensure the image covers the entire viewport */
   font-family: 'Roboto', sans-serif; /* Updated font */
 }
 
@@ -50,5 +79,10 @@ router-view {
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Shadow around content */
   border-radius: 10px; /* Rounded corners */
   background-color: rgba(28, 28, 28, 0.8); /* Semi-transparent background for content */
+}
+
+.background-selector {
+  margin-bottom: 1rem;
+  color: #ffffff; /* Ensure the dropdown label is readable */
 }
 </style>

@@ -130,8 +130,8 @@ export default defineComponent({
 .shelf {
   display: flex;
   flex-wrap: wrap;
-  background: linear-gradient(to bottom, #deb887, #f5deb3); /* Light wood gradient */
-  border: 1px solid #8b5a2b; /* Darker wood color for realism */
+  background: linear-gradient(to bottom, #9e743f, #4a3204); /* Light wood gradient */
+  border: 1px solid #44280e; /* Darker wood color for realism */
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Add shadow for depth */
@@ -165,7 +165,7 @@ export default defineComponent({
   left: 0;
   right: 0;
   height: 15px;
-  background: linear-gradient(to right, #8b5a2b, #deb887, #8b5a2b); /* Wood texture effect at the bottom */
+  background: linear-gradient(to right, #8b5a2b, #422c10, #3a220b); /* Wood texture effect at the bottom */
   border-radius: 0 0 8px 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
