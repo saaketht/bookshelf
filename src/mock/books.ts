@@ -86,7 +86,7 @@ export const mockBooks: Book[] = [
     title: 'Fahrenheit 451',
     author: 'Ray Bradbury',
     genre: 'Dystopian',
-    color: '#FFEB3B',
+    color: '#ABC437',
     pages: 194,
     publishedYear: 1953,
     coverUrl: 'https://covers.openlibrary.org/b/id/8242696-L.jpg' // Source: Open Library

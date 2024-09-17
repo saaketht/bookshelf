@@ -1,7 +1,7 @@
 <template>
   <div class="bookshelf-container">
     <div class="bookshelf-controls">
-      <label for="sort-select">Sort by: </label>
+      <label for="sort-select">Sort by:&nbsp;</label>
       <select id="sort-select" v-model="sortBy" @change="sortBooks">
         <option value="title">Title</option>
         <option value="author">Author</option>
@@ -48,7 +48,6 @@
     </div>
   </div>
 </template>
-
 
 <script lang="ts">
 import { defineComponent, ref, computed } from 'vue'
@@ -119,31 +118,14 @@ export default defineComponent({
   align-items: center;
 }
 
-.view-toggle, .cover-toggle {
+.view-toggle,
+.cover-toggle {
   font-size: 0.9rem;
 }
 
 .bookshelf-wrapper {
-  margin-bottom: 2rem;
-}
-
-.shelf {
-  display: flex;
-  flex-wrap: wrap;
-  background: linear-gradient(to bottom, #9e743f, #4a3204); /* Light wood gradient */
-  border: 1px solid #44280e; /* Darker wood color for realism */
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Add shadow for depth */
-  position: relative;
-  margin-bottom: 20px;
-  height: 300px;
-  perspective: 1000px;
-  transform-style: preserve-3d;
-}
-
-.shelf:hover {
-  transform: rotateX(-3deg) rotateY(3deg); /* Slight 3D effect on hover */
+  overflow-x: auto;
+  margin-bottom: 1rem;
 }
 
 .shelf::before {
@@ -153,9 +135,25 @@ export default defineComponent({
   left: 0;
   right: 0;
   height: 30px;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0)); /* Shadow for the top */
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0)
+  ); /* Shadow for the top */
   border-radius: 8px 8px 0 0;
   box-shadow: inset 0 -4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.shelf {
+  display: inline-flex;
+  background: linear-gradient(to bottom, #9e743f, #4a3204); /* Light wood gradient */
+  border: 1px solid #44280e; /* Darker wood color for realism */
+  padding: 20px;
+  position: relative;
+  margin-bottom: 14px;
+  height: 100%;
+  perspective: 1000px;
+  transform-style: preserve-3d;
 }
 
 .shelf::after {
@@ -165,7 +163,12 @@ export default defineComponent({
   left: 0;
   right: 0;
   height: 15px;
-  background: linear-gradient(to right, #8b5a2b, #422c10, #3a220b); /* Wood texture effect at the bottom */
+  background: linear-gradient(
+    to right,
+    #8b5a2b,
+    #422c10,
+    #3a220b
+  ); /* Wood texture effect at the bottom */
   border-radius: 0 0 8px 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
@@ -176,4 +179,3 @@ export default defineComponent({
   align-items: center;
 }
 </style>
-

@@ -6,9 +6,9 @@
     }"
   >
     <div v-if="!useCoverImage" class="book-info">
-      <span class="book-title">{{ book.title }}</span>
-      <span class="book-author">{{ book.author }}</span>
-      <span class="book-extra">{{ book.pages }} pgs | pub. {{ book.publishedYear }}</span>
+      <div class="book-title">{{ book.title }}</div>
+      <div class="book-author">{{ book.author }}</div>
+      <div class="book-extra">{{ book.pages }} pgs | pub. {{ book.publishedYear }}</div>
     </div>
     <img v-if="useCoverImage" :src="book.coverUrl" alt="Book Cover" class="book-cover-img" />
   </div>
@@ -39,7 +39,6 @@ export default defineComponent({
   height: 250px;
   margin-right: 10px;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   color: white;
@@ -56,32 +55,32 @@ export default defineComponent({
 
 /* Book info (text details) */
 .book-info {
-  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 1rem;
   text-align: center;
 }
 
 /* Title styles */
 .book-title {
   font-weight: bold;
-  font-size: 1em;
+  font-size: 1.2em;
   margin-bottom: 0.5rem;
   max-height: 3em;
-  overflow: hidden;
-  display: -webkit-box;
-  line-clamp: 2;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
 }
 
 /* Author styles */
 .book-author {
   font-style: italic;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
 }
 
 /* Extra info (pages, year) styles */
 .book-extra {
-  font-size: 0.7em;
+  font-size: 0.8em;
   opacity: 0.9;
 }
 
