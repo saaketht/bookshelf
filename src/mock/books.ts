@@ -156,7 +156,7 @@ export const mockBooks: Book[] = [
   },
   {
     id: '18',
-    title: 'The Divine Comedy',
+    title: 'The2 Divine Comedy',
     author: 'Dante Alighieri',
     genre: 'Epic',
     color: '#FF9800',

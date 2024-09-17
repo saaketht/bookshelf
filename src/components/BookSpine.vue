@@ -79,7 +79,7 @@ export default defineComponent({
 }
 
 .book-spine:hover::before {
-  opacity: 1;
+  opacity: 11;
 }
 
 .book-info {
