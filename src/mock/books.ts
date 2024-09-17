@@ -17,7 +17,8 @@ export const mockBooks: Book[] = [
     genre: 'Science Fiction',
     color: '#E53935',
     pages: 328,
-    publishedYear: 1949
+    publishedYear: 1949,
+    coverUrl: 'https://d3525k1ryd2155.cloudfront.net/f/935/524/9780451524935.RH.0.l.jpg'
   },
   {
     id: '3',

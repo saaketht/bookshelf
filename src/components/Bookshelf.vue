@@ -9,15 +9,39 @@
         <option value="pages">Pages</option>
         <option value="publishedYear">Year</option>
       </select>
+      &nbsp;
+
+      <!-- Toggle between spine and cover view -->
+      <label for="view-toggle" class="view-toggle">
+        Use cover view:
+        <input id="view-toggle" type="checkbox" v-model="showCoverView" />
+        &nbsp;
+      </label>
+
+      <!-- Toggle for using cover images or not -->
+      <label for="cover-toggle" class="cover-toggle">
+        Show cover images:
+        <input id="cover-toggle" type="checkbox" v-model="useCoverImages" />
+      </label>
     </div>
     <div class="bookshelf-wrapper">
       <div class="shelf">
-        <BookSpine
-          v-for="book in sortedBooks"
-          :key="book.id"
-          :book="book"
-          @mouseenter="handleBookHover(book)"
-        />
+        <template v-if="!showCoverView">
+          <BookSpine
+            v-for="book in sortedBooks"
+            :key="book.id"
+            :book="book"
+            :useCoverImage="useCoverImages"
+          />
+        </template>
+        <template v-else>
+          <BookCover
+            v-for="book in sortedBooks"
+            :key="book.id"
+            :book="book"
+            :useCoverImage="useCoverImages"
+          />
+        </template>
       </div>
     </div>
   </div>
@@ -28,15 +52,19 @@ import { defineComponent, ref, computed } from 'vue'
 import { type Book } from '@/types/book'
 import { mockBooks } from '@/mock/books'
 import BookSpine from './BookSpine.vue'
+import BookCover from './BookCover.vue'
 
 export default defineComponent({
   name: 'Bookshelf-main',
   components: {
-    BookSpine
+    BookSpine,
+    BookCover
   },
   setup() {
     const books = ref<Book[]>(mockBooks)
     const sortBy = ref<keyof Book>('title')
+    const showCoverView = ref(false)
+    const useCoverImages = ref(false)
 
     const sortedBooks = computed(() => {
       return [...books.value].sort((a, b) => {
@@ -54,14 +82,16 @@ export default defineComponent({
 
     const handleBookHover = (book: Book) => {
       console.log('Book hovered:', book.title)
-      // We'll implement the cover display effect later
+      // implement the cover display effect later
     }
 
     return {
       sortBy,
       sortedBooks,
       sortBooks,
-      handleBookHover
+      handleBookHover,
+      showCoverView,
+      useCoverImages
     }
   }
 })
@@ -77,6 +107,11 @@ export default defineComponent({
 
 .bookshelf-controls {
   margin-bottom: 2rem;
+}
+
+.view-toggle .cover-toggle {
+  margin-left: 1rem;
+  font-size: 0.9rem;
 }
 
 .bookshelf-wrapper {
