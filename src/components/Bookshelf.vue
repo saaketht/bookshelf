@@ -31,22 +31,22 @@
       <div v-for="(shelfBooks, index) in groupedBooks" :key="index" class="bookshelf-wrapper">
         <div class="shelf">
           <template v-if="!showCoverView">
-            <BookSpine
-              v-for="book in shelfBooks"
-              :key="book.id"
-              :book="book"
-              :useCoverImage="useCoverImages"
-              @click="goToReader(book.id)"
-            />
+           <BookSpine
+  v-for="book in shelfBooks"
+  :key="book.id"
+  :book="book"
+  :useCoverImage="useCoverImages"
+  @click="goToReader(book)" 
+/>
           </template>
           <template v-else>
-            <BookCover
-              v-for="book in shelfBooks"
-              :key="book.id"
-              :book="book"
-              :useCoverImage="useCoverImages"
-              @click="goToReader(book.id)"
-            />
+<BookCover
+  v-for="book in shelfBooks"
+  :key="book.id"
+  :book="book"
+  :useCoverImage="useCoverImages"
+  @click="goToReader(book)" 
+/>
           </template>
         </div>
       </div>
@@ -71,8 +71,8 @@ export default defineComponent({
   setup() {
     const books = ref<Book[]>(mockBooks)
     const sortBy = ref<keyof Book>('title')
-    const showCoverView = ref(false)
-    const useCoverImages = ref(false)
+    const showCoverView = ref(true)
+    const useCoverImages = ref(true)
     const router = useRouter()
 
     const booksPerShelf = 5
@@ -98,10 +98,9 @@ export default defineComponent({
       // Sorting is handled by computed
     }
 
-    const goToReader = (bookId: string) => {
-      router.push({ name: 'ReaderView', params: { id: bookId } }) // Navigate to the Reader view with the book ID
-    }
-
+    const goToReader = (book: Book) => {
+  router.push({ name: 'ReaderView', params: { book } }); // Pass the entire book object
+};
     return {
       sortBy,
       goToReader,

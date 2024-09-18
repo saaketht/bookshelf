@@ -76,5 +76,185 @@ export const mockBooks: Book[] = [
       // Add more content as needed
     ]
   },
+  {
+    id: '5',
+    title: 'Moby-Dick',
+    author: 'Herman Melville',
+    genre: 'Adventure',
+    color: '#0097A7',
+    pages: 585,
+    publishedYear: 1851,
+    coverUrl: 'https://covers.openlibrary.org/b/id/7154907-L.jpg', // Source: Open Library
+    bookContent: [
+      'Chapter 1: Loomings: Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in...',
+      'Chapter 2: The Carpet-Bag: I stuffed a shirt or two into my old carpet-bag, sewed it up, and took leave of the...',
+      // Add more content as needed
+    ]
+  },
+  {
+    id: '5',
+    title: 'Moby-Dick',
+    author: 'Herman Melville',
+    genre: 'Adventure',
+    color: '#0097A7',
+    pages: 585,
+    publishedYear: 1851,
+    coverUrl: 'https://covers.openlibrary.org/b/id/7154907-L.jpg', // Source: Open Library
+    bookContent: [
+      'Chapter 1: Loomings: Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in...',
+      'Chapter 2: The Carpet-Bag: I stuffed a shirt or two into my old carpet-bag, sewed it up, and took leave of the...',
+      // Add more content as needed
+    ]
+  },
+  {
+    id: '5',
+    title: 'Moby-Dick',
+    author: 'Herman Melville',
+    genre: 'Adventure',
+    color: '#0097A7',
+    pages: 585,
+    publishedYear: 1851,
+    coverUrl: 'https://covers.openlibrary.org/b/id/7154907-L.jpg', // Source: Open Library
+    bookContent: [
+      'Chapter 1: Loomings: Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in...',
+      'Chapter 2: The Carpet-Bag: I stuffed a shirt or two into my old carpet-bag, sewed it up, and took leave of the...',
+      // Add more content as needed
+    ]
+  },
+  {
+    id: '5',
+    title: 'Moby-Dick',
+    author: 'Herman Melville',
+    genre: 'Adventure',
+    color: '#0097A7',
+    pages: 585,
+    publishedYear: 1851,
+    coverUrl: 'https://covers.openlibrary.org/b/id/7154907-L.jpg', // Source: Open Library
+    bookContent: [
+      'Chapter 1: Loomings: Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in...',
+      'Chapter 2: The Carpet-Bag: I stuffed a shirt or two into my old carpet-bag, sewed it up, and took leave of the...',
+      // Add more content as needed
+    ]
+  },
+  {
+    id: '5',
+    title: 'Moby-Dick',
+    author: 'Herman Melville',
+    genre: 'Adventure',
+    color: '#0097A7',
+    pages: 585,
+    publishedYear: 1851,
+    coverUrl: 'https://covers.openlibrary.org/b/id/7154907-L.jpg', // Source: Open Library
+    bookContent: [
+      'Chapter 1: Loomings: Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in...',
+      'Chapter 2: The Carpet-Bag: I stuffed a shirt or two into my old carpet-bag, sewed it up, and took leave of the...',
+      // Add more content as needed
+    ]
+  },
+  {
+    id: '5',
+    title: 'Moby-Dick',
+    author: 'Herman Melville',
+    genre: 'Adventure',
+    color: '#0097A7',
+    pages: 585,
+    publishedYear: 1851,
+    coverUrl: 'https://covers.openlibrary.org/b/id/7154907-L.jpg', // Source: Open Library
+    bookContent: [
+      'Chapter 1: Loomings: Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in...',
+      'Chapter 2: The Carpet-Bag: I stuffed a shirt or two into my old carpet-bag, sewed it up, and took leave of the...',
+      // Add more content as needed
+    ]
+  },
+  {
+    id: '5',
+    title: 'Moby-Dick',
+    author: 'Herman Melville',
+    genre: 'Adventure',
+    color: '#0097A7',
+    pages: 585,
+    publishedYear: 1851,
+    coverUrl: 'https://covers.openlibrary.org/b/id/7154907-L.jpg', // Source: Open Library
+    bookContent: [
+      'Chapter 1: Loomings: Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in...',
+      'Chapter 2: The Carpet-Bag: I stuffed a shirt or two into my old carpet-bag, sewed it up, and took leave of the...',
+      // Add more content as needed
+    ]
+  },
+  {
+    id: '5',
+    title: 'Moby-Dick',
+    author: 'Herman Melville',
+    genre: 'Adventure',
+    color: '#0097A7',
+    pages: 585,
+    publishedYear: 1851,
+    coverUrl: 'https://covers.openlibrary.org/b/id/7154907-L.jpg', // Source: Open Library
+    bookContent: [
+      'Chapter 1: Loomings: Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in...',
+      'Chapter 2: The Carpet-Bag: I stuffed a shirt or two into my old carpet-bag, sewed it up, and took leave of the...',
+      // Add more content as needed
+    ]
+  },
+  {
+    id: '5',
+    title: 'Moby-Dick',
+    author: 'Herman Melville',
+    genre: 'Adventure',
+    color: '#0097A7',
+    pages: 585,
+    publishedYear: 1851,
+    coverUrl: 'https://covers.openlibrary.org/b/id/7154907-L.jpg', // Source: Open Library
+    bookContent: [
+      'Chapter 1: Loomings: Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in...',
+      'Chapter 2: The Carpet-Bag: I stuffed a shirt or two into my old carpet-bag, sewed it up, and took leave of the...',
+      // Add more content as needed
+    ]
+  },
+  {
+    id: '5',
+    title: 'Moby-Dick',
+    author: 'Herman Melville',
+    genre: 'Adventure',
+    color: '#0097A7',
+    pages: 585,
+    publishedYear: 1851,
+    coverUrl: 'https://covers.openlibrary.org/b/id/7154907-L.jpg', // Source: Open Library
+    bookContent: [
+      'Chapter 1: Loomings: Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in...',
+      'Chapter 2: The Carpet-Bag: I stuffed a shirt or two into my old carpet-bag, sewed it up, and took leave of the...',
+      // Add more content as needed
+    ]
+  },
+  {
+    id: '5',
+    title: 'Moby-Dick',
+    author: 'Herman Melville',
+    genre: 'Adventure',
+    color: '#0097A7',
+    pages: 585,
+    publishedYear: 1851,
+    coverUrl: 'https://covers.openlibrary.org/b/id/7154907-L.jpg', // Source: Open Library
+    bookContent: [
+      'Chapter 1: Loomings: Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in...',
+      'Chapter 2: The Carpet-Bag: I stuffed a shirt or two into my old carpet-bag, sewed it up, and took leave of the...',
+      // Add more content as needed
+    ]
+  },
+  {
+    id: '5',
+    title: 'Moby-Dick',
+    author: 'Herman Melville',
+    genre: 'Adventure',
+    color: '#0097A7',
+    pages: 585,
+    publishedYear: 1851,
+    coverUrl: 'https://covers.openlibrary.org/b/id/7154907-L.jpg', // Source: Open Library
+    bookContent: [
+      'Chapter 1: Loomings: Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in...',
+      'Chapter 2: The Carpet-Bag: I stuffed a shirt or two into my old carpet-bag, sewed it up, and took leave of the...',
+      // Add more content as needed
+    ]
+  },
   // Add additional books with bookContent as needed
 ]

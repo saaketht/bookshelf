@@ -46,21 +46,6 @@ export default defineComponent({
       'This chapter outlines the methodologies employed in the research. It includes detailed descriptions of experimental designs, data collection techniques, and analytical methods used to ensure accuracy and reliability.\n' +
       'Methodologies are critical in research as they determine the validity of the findings. This section provides transparency and allows for the replication of results. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue. Cras mattis consectetur purus sit amet fermentum.\n' +
       'Additionally, the chapter discusses the rationale behind the chosen methods and any challenges encountered during the process. It also includes considerations for future improvements and refinements.',
-
-      'Chapter 4: Results\n' +
-      'Here we present the results of the study, including detailed tables, graphs, and statistical analyses. This chapter highlights the key findings and their significance in the context of the research questions posed.\n' +
-      'The results are analyzed to draw meaningful conclusions and support the overall thesis. Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.\n' +
-      'Each result is discussed in terms of its implications and relevance. Comparative analyses with previous studies are included to validate the findings and provide a comprehensive view of the subject matter.',
-
-      'Chapter 5: Discussion\n' +
-      'The discussion section interprets the results within the broader context of the existing literature. It examines the implications of the findings, addresses limitations, and explores potential areas for future research.\n' +
-      'Key findings are contextualized in relation to previous research and theoretical frameworks. Vivamus suscipit tortor eget felis porttitor volutpat. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Nulla quis lorem ut libero malesuada feugiat.\n' +
-      'The chapter also provides a critical analysis of the study’s limitations and suggests potential improvements. Recommendations for future research are offered, based on the insights gained from the study.',
-
-      'Chapter 6: Conclusion\n' +
-      'The conclusion summarizes the main findings and their significance. It reflects on the overall contribution of the research to the field and offers final thoughts on the implications and future directions.\n' +
-      'The chapter wraps up the discussion by reiterating the key points and highlighting the importance of the research outcomes. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec id elit non mi porta gravida at eget metus. Cras ultricies ligula sed magna dictum porta.\n' +
-      'Finally, the conclusion provides closing remarks and emphasizes the value of the research in advancing knowledge and understanding in the subject area.'
     ]);
 
     const currentPage = ref(1); // Current page (1-based index)
