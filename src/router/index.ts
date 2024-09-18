@@ -11,10 +11,10 @@ const router = createRouter({
       component: Bookshelf
     },
 {
-  path: '/reader',
+  path: '/reader/:id',
   name: 'ReaderView',
   component: Reader,
-  props: (route) => ({ book: route.params.book }) // Pass the book data as a prop
+  props: true// Pass the book data as a prop
 }
   ]
 })

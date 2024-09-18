@@ -31,22 +31,22 @@
       <div v-for="(shelfBooks, index) in groupedBooks" :key="index" class="bookshelf-wrapper">
         <div class="shelf">
           <template v-if="!showCoverView">
-           <BookSpine
-  v-for="book in shelfBooks"
-  :key="book.id"
-  :book="book"
-  :useCoverImage="useCoverImages"
-  @click="goToReader(book)" 
-/>
+            <BookSpine
+              v-for="book in shelfBooks"
+              :key="book.id"
+              :book="book"
+              :useCoverImage="useCoverImages"
+              @click="goToReader(book)" 
+            />
           </template>
           <template v-else>
-<BookCover
-  v-for="book in shelfBooks"
-  :key="book.id"
-  :book="book"
-  :useCoverImage="useCoverImages"
-  @click="goToReader(book)" 
-/>
+            <BookCover
+              v-for="book in shelfBooks"
+              :key="book.id"
+              :book="book"
+              :useCoverImage="useCoverImages"
+              @click="goToReader(book)" 
+            />
           </template>
         </div>
       </div>
@@ -55,12 +55,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed } from 'vue'
-import { type Book } from '@/types/book'
-import { mockBooks } from '@/mock/books'
-import BookSpine from './BookSpine.vue'
-import BookCover from './BookCover.vue'
-import { useRouter } from 'vue-router'
+import { defineComponent, ref, computed } from 'vue';
+import { type Book } from '@/types/book';
+import { mockBooks } from '@/mock/books';
+import BookSpine from './BookSpine.vue';
+import BookCover from './BookCover.vue';
+import { useRouter } from 'vue-router';
 
 export default defineComponent({
   name: 'BookshelfMain',
@@ -69,124 +69,86 @@ export default defineComponent({
     BookCover
   },
   setup() {
-    const books = ref<Book[]>(mockBooks)
-    const sortBy = ref<keyof Book>('title')
-    const showCoverView = ref(true)
-    const useCoverImages = ref(true)
-    const router = useRouter()
+    const books = ref<Book[]>(mockBooks);
+    const sortBy = ref<keyof Book>('title');
+    const showCoverView = ref(true);
+    const useCoverImages = ref(true);
+    const router = useRouter();
 
-    const booksPerShelf = 5
+    const booksPerShelf = 5;
 
     const sortedBooks = computed(() => {
       return [...books.value].sort((a, b) => {
-        if (typeof a[sortBy.value] === 'string' && typeof b[sortBy.value] === 'string') {
-          return (a[sortBy.value] as string).localeCompare(b[sortBy.value] as string)
+        if (typeof a[sortBy.value] === 'string') {
+          return (a[sortBy.value] as string).localeCompare(b[sortBy.value] as string);
+        } else if (typeof a[sortBy.value] === 'number') {
+          return (a[sortBy.value] as number) - (b[sortBy.value] as number);
         }
-        return (a[sortBy.value] as number) - (b[sortBy.value] as number)
-      })
-    })
+        return 0;
+      });
+    });
 
     const groupedBooks = computed(() => {
-      const shelves = []
+      const shelves = [];
       for (let i = 0; i < sortedBooks.value.length; i += booksPerShelf) {
-        shelves.push(sortedBooks.value.slice(i, i + booksPerShelf))
+        shelves.push(sortedBooks.value.slice(i, i + booksPerShelf));
       }
-      return shelves
-    })
-
-    const sortBooks = () => {
-      // Sorting is handled by computed
-    }
+      return shelves;
+    });
 
     const goToReader = (book: Book) => {
-  router.push({ name: 'ReaderView', params: { book } }); // Pass the entire book object
+  router.push({ name: 'ReaderView', params: { id: book.id } });
 };
+
+    const sortBooks = () => {
+      // Sorting logic is handled in the computed property
+    };
+
     return {
+      books,
       sortBy,
-      goToReader,
-      groupedBooks,
-      sortBooks,
       showCoverView,
-      useCoverImages
-    }
+      useCoverImages,
+      groupedBooks,
+      goToReader,
+      sortBooks
+    };
   }
-})
+});
 </script>
 
 <style scoped>
 .bookshelf-container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
   padding: 20px;
-  font-family: Arial, sans-serif;
 }
 
 .bookshelf-controls {
-  margin-bottom: 2rem;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.bookshelf-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.shelf {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .view-toggle,
 .cover-toggle {
-  font-size: 0.9rem;
-}
-
-.bookshelf-wrapper {
-  overflow-x: auto;
-  margin-bottom: 1rem;
-}
-
-.shelf::before {
-  content: '';
-  position: absolute;
-  top: -15px;
-  left: 0;
-  right: 0;
-  height: 30px;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.3),
-    rgba(0, 0, 0, 0)
-  ); /* Shadow for the top */
-  border-radius: 8px 8px 0 0;
-  box-shadow: inset 0 -4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.shelf {
-  display: inline-flex;
-  background: linear-gradient(to bottom, #9e743f, #4a3204); /* Light wood gradient */
-  border: 1px solid #44280e; /* Darker wood color for realism */
-  padding: 20px;
-  position: relative;
-  margin-bottom: 14px;
-  height: 100%;
-  perspective: 1000px;
-  transform-style: preserve-3d;
-}
-
-.shelf::after {
-  content: '';
-  position: absolute;
-  bottom: -15px;
-  left: 0;
-  right: 0;
-  height: 15px;
-  background: linear-gradient(
-    to right,
-    #8b5a2b,
-    #422c10,
-    #3a220b
-  ); /* Wood texture effect at the bottom */
-  border-radius: 0 0 8px 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.bookshelf-container {
   display: flex;
-  flex-direction: column;
   align-items: center;
+}
+
+.view-toggle input,
+.cover-toggle input {
+  margin-left: 5px;
 }
 </style>

@@ -7,5 +7,5 @@ export type Book = {
   pages: number;
   publishedYear: number;
   coverUrl: string;
-  bookContent: string[]; // Add this field
+  bookContent: string[];
 };
