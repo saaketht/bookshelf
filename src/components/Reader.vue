@@ -1,5 +1,5 @@
 <template>
-  <button class="back-button" @click="goToBookShelf">Go to Shelf</button>
+  
 
   <div class="reader-container">
     <div class="book">
@@ -93,27 +93,29 @@ export default defineComponent({
   align-items: center;
   justify-content: center;
   height: 100vh;
-  width: 50vw;
-  background-color: #181818; /* Dark background */
+  width: 100vw;
+  background: none;
   padding: 20px;
 }
 
 .book {
   display: flex;
-  width: 80%;
-  max-width: 1000px;
-  height: 600px;
-  background-color: #f7e4c3; /* Book color */
+  max-width: 80vw;
+  min-width: 80vw;
+  height: 100vh;
+  background: linear-gradient(90deg, #f7e4c3, #7d7171 50%, #7d7171 50%, #f7e4c3); /* Simulate book binding */
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   overflow: hidden;
+  color:black;
+  font-family: 'Georgia', serif;
 }
 
 .page {
   flex: 1;
   padding: 20px;
   overflow-y: auto;
-  background-color: #c5a456;
+  
   border: 1px solid #ddd;
 }
 

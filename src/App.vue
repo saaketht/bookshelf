@@ -1,36 +1,54 @@
 <template>
   <div id="app">
-    <h1>My Bookshelf</h1>
-    <div class="background-selector">
-      <label for="background-select">Choose background:</label>
-      <select id="background-select" v-model="backgroundType" @change="updateBackground">
-        <option value="image">Image</option>
-        <option value="color">Solid Color</option>
-      </select>
+    <!-- Collapsible Sidebar -->
+    <div :class="['sidebar', { open: isSidebarOpen }]">
+      <ul class="navbar-list">
+        <li><router-link to="/">Bookshelf</router-link></li>
+        <li><router-link to="/reader">Reader</router-link></li>
+        <!-- Add more links as needed -->
+      </ul>
     </div>
 
+    <!-- Button to manually toggle the sidebar (optional) -->
+    
+
+    <h1>My Bookshelf</h1>
 
     <router-view></router-view>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref, onMounted, onBeforeUnmount } from 'vue'
 
 export default defineComponent({
   name: 'App',
   setup() {
-    const backgroundType = ref<'image' | 'color'>('image')
+    const isSidebarOpen = ref(false) // Sidebar state
 
-
-    const updateBackground = () => {
-      // Trigger a watch to apply background styles
-      backgroundType.value
+    const toggleSidebar = () => {
+      isSidebarOpen.value = !isSidebarOpen.value // Toggle sidebar visibility
     }
 
+    const handleKeyPress = (event: KeyboardEvent) => {
+      if (event.ctrlKey && event.key === 'q') {
+        toggleSidebar() // Toggle sidebar on Ctrl + Q
+      }
+    }
+
+    onMounted(() => {
+      // Listen for keydown events
+      window.addEventListener('keydown', handleKeyPress)
+    })
+
+    onBeforeUnmount(() => {
+      // Remove event listener when component is destroyed
+      window.removeEventListener('keydown', handleKeyPress)
+    })
+
     return {
-      backgroundType,
-      updateBackground,
+      isSidebarOpen,
+      toggleSidebar
     }
   }
 })
@@ -41,6 +59,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
+  background-color: linear-gradient(135deg, #2980b9, #2c3e50);
 }
 
 #app {
@@ -48,12 +67,12 @@ body {
   color: #ffffff;
   min-height: 100vh;
   display: flex;
-  width: 100vw;
+  min-width: 100vw;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 20px;
-  background: rgba(0, 0, 0, 0.5);
+  background:linear-gradient(135deg, #2980b9, #2c3e50);
   border-radius: 10px;
 }
 
@@ -73,23 +92,54 @@ router-view {
   background-color: rgba(28, 28, 28, 0.8);
 }
 
-.background-selector {
-  margin-bottom: 1rem;
-  color: #ffffff;
+/* Collapsible Sidebar styles */
+.sidebar {
+  position: fixed;
+  left: -250px; /* Sidebar is hidden */
+  top: 0;
+  width: 250px;
+  height: 100%;
+  background-color: #2980b9;
+  padding: 20px;
+  transition: left 0.3s ease; /* Smooth transition */
 }
 
-button {
-  margin-top: 1.5rem;
-  padding: 10px 20px;
+.sidebar.open {
+  left: 0; /* Sidebar visible when open */
+}
+
+.navbar-list {
+  list-style: none;
+  padding: 0;
+}
+
+.navbar-list li {
+  margin-bottom: 15px;
+}
+
+.navbar-list a {
+  color: #f39c12;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.navbar-list a:hover {
+  text-decoration: underline;
+}
+
+.toggle-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
   background-color: #f39c12;
   color: white;
   border: none;
   border-radius: 5px;
+  padding: 10px 20px;
   cursor: pointer;
-  font-size: 1.2rem;
 }
 
-button:hover {
+.toggle-btn:hover {
   background-color: #e67e22;
 }
 </style>

@@ -1,4 +1,5 @@
 <template>
+  <div class="page">
   <div class="bookshelf-container">
     <div class="bookshelf-controls">
       <label for="sort-select">Sort by:&nbsp;</label>
@@ -24,7 +25,7 @@
         <input id="cover-toggle" type="checkbox" v-model="useCoverImages" />
       </label>
     </div>
-    <button @click="goToReader">Go to Reader</button>
+    
 
     <!-- Render shelves -->
     <div v-for="(shelfBooks, index) in groupedBooks" :key="index" class="bookshelf-wrapper">
@@ -48,6 +49,7 @@
       </div>
     </div>
   </div>
+</div>
 </template>
 
 <script lang="ts">
@@ -113,6 +115,9 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.{
+  background-color: black;
+}
 .bookshelf-container {
   width: 100%;
   max-width: 1200px;
