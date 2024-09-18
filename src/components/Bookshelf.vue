@@ -1,55 +1,57 @@
 <template>
   <div class="page">
-  <div class="bookshelf-container">
-    <div class="bookshelf-controls">
-      <label for="sort-select">Sort by:&nbsp;</label>
-      <select id="sort-select" v-model="sortBy" @change="sortBooks">
-        <option value="title">Title</option>
-        <option value="author">Author</option>
-        <option value="genre">Genre</option>
-        <option value="pages">Pages</option>
-        <option value="publishedYear">Year</option>
-      </select>
-      &nbsp;
-
-      <!-- Toggle between spine and cover view -->
-      <label for="view-toggle" class="view-toggle">
-        Use cover view:
-        <input id="view-toggle" type="checkbox" v-model="showCoverView" />
+    <div class="bookshelf-container">
+      <h1>Book Shelf</h1>
+      <div class="bookshelf-controls">
+        <label for="sort-select">Sort by:&nbsp;</label>
+        <select id="sort-select" v-model="sortBy" @change="sortBooks">
+          <option value="title">Title</option>
+          <option value="author">Author</option>
+          <option value="genre">Genre</option>
+          <option value="pages">Pages</option>
+          <option value="publishedYear">Year</option>
+        </select>
         &nbsp;
-      </label>
 
-      <!-- Toggle for using cover images or not -->
-      <label for="cover-toggle" class="cover-toggle">
-        Show cover images:
-        <input id="cover-toggle" type="checkbox" v-model="useCoverImages" />
-      </label>
-    </div>
-    
+        <!-- Toggle between spine and cover view -->
+        <label for="view-toggle" class="view-toggle">
+          Use cover view:
+          <input id="view-toggle" type="checkbox" v-model="showCoverView" />
+          &nbsp;
+        </label>
 
-    <!-- Render shelves -->
-    <div v-for="(shelfBooks, index) in groupedBooks" :key="index" class="bookshelf-wrapper">
-      <div class="shelf">
-        <template v-if="!showCoverView">
-          <BookSpine
-            v-for="book in shelfBooks"
-            :key="book.id"
-            :book="book"
-            :useCoverImage="useCoverImages"
-          />
-        </template>
-        <template v-else>
-          <BookCover
-            v-for="book in shelfBooks"
-            :key="book.id"
-            :book="book"
-            :useCoverImage="useCoverImages"
-          />
-        </template>
+        <!-- Toggle for using cover images or not -->
+        <label for="cover-toggle" class="cover-toggle">
+          Show cover images:
+          <input id="cover-toggle" type="checkbox" v-model="useCoverImages" />
+        </label>
+      </div>
+
+      <!-- Render shelves -->
+      <div v-for="(shelfBooks, index) in groupedBooks" :key="index" class="bookshelf-wrapper">
+        <div class="shelf">
+          <template v-if="!showCoverView">
+            <BookSpine
+              v-for="book in shelfBooks"
+              :key="book.id"
+              :book="book"
+              :useCoverImage="useCoverImages"
+              @click="goToReader(book.id)"
+            />
+          </template>
+          <template v-else>
+            <BookCover
+              v-for="book in shelfBooks"
+              :key="book.id"
+              :book="book"
+              :useCoverImage="useCoverImages"
+              @click="goToReader(book.id)"
+            />
+          </template>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </template>
 
 <script lang="ts">
@@ -59,9 +61,6 @@ import { mockBooks } from '@/mock/books'
 import BookSpine from './BookSpine.vue'
 import BookCover from './BookCover.vue'
 import { useRouter } from 'vue-router'
-
-
-
 
 export default defineComponent({
   name: 'BookshelfMain',
@@ -98,8 +97,9 @@ export default defineComponent({
     const sortBooks = () => {
       // Sorting is handled by computed
     }
-    const goToReader = () => {
-    router.push({ name: 'ReaderView' }) // Navigate to the Reader view (use 'ReaderView')
+
+    const goToReader = (bookId: string) => {
+      router.push({ name: 'ReaderView', params: { id: bookId } }) // Navigate to the Reader view with the book ID
     }
 
     return {
@@ -115,9 +115,6 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.{
-  background-color: black;
-}
 .bookshelf-container {
   width: 100%;
   max-width: 1200px;

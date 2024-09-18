@@ -1,10 +1,11 @@
-export interface Book {
-  id: string
-  title: string
-  author: string
-  genre: string
-  pages: number
-  publishedYear: number
-  color: string
-  coverUrl?: string
-}
+export type Book = {
+  id: string;
+  title: string;
+  author: string;
+  genre: string;
+  color: string;
+  pages: number;
+  publishedYear: number;
+  coverUrl: string;
+  bookContent: string[]; // Add this field
+};

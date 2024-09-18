@@ -12,7 +12,7 @@
     <!-- Button to manually toggle the sidebar (optional) -->
     
 
-    <h1>My Bookshelf</h1>
+    
 
     <router-view></router-view>
   </div>
@@ -72,7 +72,7 @@ body {
   align-items: center;
   justify-content: center;
   padding: 20px;
-  background:linear-gradient(135deg, #2980b9, #2c3e50);
+  background:linear-gradient(135deg, #000000, #2c3e50);
   border-radius: 10px;
 }
 
@@ -80,7 +80,7 @@ h1 {
   font-size: 3rem;
   margin-bottom: 1.5rem;
   font-weight: bold;
-  color: #f39c12;
+  color: #fffdf9;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
 }
 
@@ -99,9 +99,10 @@ router-view {
   top: 0;
   width: 250px;
   height: 100%;
-  background-color: #2980b9;
+  background:linear-gradient(135deg, #000000, #2c3e50);
   padding: 20px;
   transition: left 0.3s ease; /* Smooth transition */
+  z-index: 1000;;
 }
 
 .sidebar.open {
@@ -118,20 +119,18 @@ router-view {
 }
 
 .navbar-list a {
-  color: #f39c12;
+  color: #ffffff;
   text-decoration: none;
   font-size: 1.2rem;
 }
 
-.navbar-list a:hover {
-  text-decoration: underline;
-}
+
 
 .toggle-btn {
   position: fixed;
   top: 20px;
   right: 20px;
-  background-color: #f39c12;
+  background-color: #000000;
   color: white;
   border: none;
   border-radius: 5px;

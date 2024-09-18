@@ -40,7 +40,7 @@ export default defineComponent({
 }
 
 .navbar-list a {
-  color: #f39c12; /* Bright color for links */
+  color: #ffffff; /* Bright color for links */
   text-decoration: none;
   font-size: 1.2rem;
 }
