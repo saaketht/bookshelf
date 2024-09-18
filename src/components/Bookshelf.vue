@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <div class="bookshelf-container">
-      <h1>Book Shelf</h1>
+      <h1>bookshelf</h1>
       <div class="bookshelf-controls">
         <label for="sort-select">Sort by:&nbsp;</label>
         <select id="sort-select" v-model="sortBy" @change="sortBooks">
@@ -31,22 +31,22 @@
       <div v-for="(shelfBooks, index) in groupedBooks" :key="index" class="bookshelf-wrapper">
         <div class="shelf">
           <template v-if="!showCoverView">
-           <BookSpine
-  v-for="book in shelfBooks"
-  :key="book.id"
-  :book="book"
-  :useCoverImage="useCoverImages"
-  @click="goToReader(book)" 
-/>
+            <BookSpine
+              v-for="book in shelfBooks"
+              :key="book.id"
+              :book="book"
+              :useCoverImage="useCoverImages"
+              @click="goToReader(book)"
+            />
           </template>
           <template v-else>
-<BookCover
-  v-for="book in shelfBooks"
-  :key="book.id"
-  :book="book"
-  :useCoverImage="useCoverImages"
-  @click="goToReader(book)" 
-/>
+            <BookCover
+              v-for="book in shelfBooks"
+              :key="book.id"
+              :book="book"
+              :useCoverImage="useCoverImages"
+              @click="goToReader(book)"
+            />
           </template>
         </div>
       </div>
@@ -99,8 +99,9 @@ export default defineComponent({
     }
 
     const goToReader = (book: Book) => {
-  router.push({ name: 'ReaderView', params: { book } }); // Pass the entire book object
-};
+      router.push({ name: 'ReaderView', params: { book } }) // Pass the entire book object
+    }
+
     return {
       sortBy,
       goToReader,

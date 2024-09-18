@@ -14,12 +14,6 @@
       <span class="book-author">{{ book.author }}</span>
       <span class="book-extra">{{ book.pages }} pgs | pub. {{ book.publishedYear }}</span>
     </div>
-    <img
-      v-if="isHovered && useCoverImage"
-      :src="book.coverUrl"
-      alt="Book Cover"
-      class="book-cover"
-    />
   </div>
 </template>
 
@@ -42,8 +36,8 @@ export default defineComponent({
   setup(props) {
     const spineWidth = computed(() => {
       // Base width on number of pages, given min and max
-      const min = 30
-      const max = 60
+      const min = 50
+      const max = 90
       return Math.min(Math.max(min, props.book.pages / 7), max)
     })
 
@@ -65,7 +59,7 @@ export default defineComponent({
 <style scoped>
 .book-spine {
   height: 250px;
-  writing-mode: vertical-rl;
+  writing-mode: sideways-lr;
   text-orientation: mixed;
   display: flex;
   flex-direction: column;
@@ -73,35 +67,20 @@ export default defineComponent({
   padding: 0.5rem 0.25rem;
   color: white;
   font-size: 0.7rem;
-  transition:
-    transform 0.3s ease-in-out,
-    box-shadow 0.3s ease;
+  transition: transform 0.3s ease-in-out;
   margin-right: 10px;
+  border-radius: 5px;
   box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.3);
   position: relative;
   overflow: hidden;
-  border-radius: 5px;
-}
-
-/* Smooth hover gradient with improved visibility */
-.book-spine::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
-  opacity: 0;
-  transition:
-    opacity 0.5s ease,
-    transform 0.3s ease;
+  cursor: pointer;
+  transform-origin: left center;
+  z-index: 10;
 }
 
 /* Book hover effect: scale with smoother shadow and gradient */
 .book-spine:hover {
-  transform: scale(1.4) translateY(-5px);
-  z-index:10;
+  transform: scale(1.4);
 }
 
 .book-spine:hover::before {
@@ -114,34 +93,6 @@ export default defineComponent({
   transform: rotateY(-90deg);
 }
 
-/* Shift neighboring books when a spine is hovered */
-.book-spine.hovered + .book-spine {
-  transform: translateX(30px); /* Shift neighboring books */
-}
-
-/* Book cover styles */
-.book-cover {
-  display: none; /* Hidden by default */
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  transition: opacity 0.3s ease;
-}
-
-/* Display cover on hover */
-.book-spine.hovered .book-cover {
-  display: block;
-  opacity: 1;
-  
-}
-
-.book-spine:not(.hovered) {
-  transition: transform 0.3s ease; /* Add a slight transition for all books */
-}
-
 /* Book info (text details) */
 .book-info {
   display: flex;
@@ -149,6 +100,7 @@ export default defineComponent({
   justify-content: space-between;
   height: 100%;
   padding: 0.5rem 0;
+  pointer-events: none;
 }
 
 /* Title styles */
@@ -158,6 +110,7 @@ export default defineComponent({
   margin-bottom: 0.5rem;
   /* Improved handling of long titles */
   max-height: 100%;
+  pointer-events: none;
 }
 
 /* Author styles */
@@ -169,6 +122,7 @@ export default defineComponent({
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  pointer-events: none;
 }
 
 /* Extra info (pages, year) styles */
@@ -178,6 +132,7 @@ export default defineComponent({
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  pointer-events: none;
 }
 
 /* Adjust height for mobile view */
