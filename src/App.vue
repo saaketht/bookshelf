@@ -55,16 +55,13 @@ export default defineComponent({
 </script>
 
 <style>
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Roboto', sans-serif;
-  background-color: linear-gradient(135deg, #2980b9, #2c3e50);
-}
-
 #app {
+  font-family: Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #ffffff;
+  /* color: #2c3e50; light mode font color */
+  color: #f0f0f0;
   min-height: 100vh;
   display: flex;
   min-width: 100vw;
@@ -72,14 +69,14 @@ body {
   align-items: center;
   justify-content: center;
   padding: 20px;
-  background:linear-gradient(135deg, #000000, #2c3e50);
+  background: linear-gradient(135deg, #000000, #1983ec);
   border-radius: 10px;
 }
 
 h1 {
   font-size: 3rem;
-  margin-bottom: 1.5rem;
-  font-weight: bold;
+  margin-bottom: 1rem;
+  font-weight: lighter;
   color: #fffdf9;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
 }
@@ -99,10 +96,10 @@ router-view {
   top: 0;
   width: 250px;
   height: 100%;
-  background:linear-gradient(135deg, #000000, #2c3e50);
+  background: linear-gradient(135deg, #000000, #2c3e50);
   padding: 20px;
   transition: left 0.3s ease; /* Smooth transition */
-  z-index: 1000;;
+  z-index: 1000;
 }
 
 .sidebar.open {
@@ -123,8 +120,6 @@ router-view {
   text-decoration: none;
   font-size: 1.2rem;
 }
-
-
 
 .toggle-btn {
   position: fixed;
